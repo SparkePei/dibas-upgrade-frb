@@ -1,6 +1,6 @@
 # dibas upgrade memo
 
-	To get the power data for FRBs detection when Dibas run in SETI observation mode, we made a slight firmware revise based on the original version. The FFT block signal was split to a new streamline, which include correlator, accumulator, packetizer and Ethernet data output. Due to the whole 8 ten-GbE ports were occupied by SETI data output, the FRB data will be sent through an one-GbE port. The diagram of this upgrade see figure 1. 
+To get the power data for FRBs detection when Dibas run in SETI observation mode, we made a slight firmware revise based on the original version. The FFT block signal was split to a new streamline, which include correlator, accumulator, packetizer and Ethernet data output. Due to the whole 8 ten-GbE ports were occupied by SETI data output, the FRB data will be sent through an one-GbE port. The diagram of this upgrade see figure 1. 
 
 ![arch](arch.png)
 > fig. 1 Dibas upgrade for FRBs detection
