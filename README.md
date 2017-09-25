@@ -28,7 +28,7 @@ To get the power data for FRBs detection when Dibas run in SETI observation mode
 
 * If you confused about the packets format, here's some python code! :+1: 
 ```javascript
-	# receive data from packets
+	# receive packets from one Gb Ethernet
 	data, addr = sock.recvfrom(frame_len)
 	frame_tmp = struct.unpack('<'+str(len(data))+'B',data) # unsigned char
 	# split packet to header, xx, yy
