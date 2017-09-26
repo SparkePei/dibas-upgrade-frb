@@ -6,21 +6,10 @@ import time
 HOST = 'r2d021403.casper.pvt' # 10.0.1.170
 #DEST_IP   = (10<<24) + (0<<16) + (1<<8) + (1<<0) #c0a8290a,acme1
 DEST_IP   = (10<<24) + (0<<16) + (1<<8) + (12<<0) #peix-RAL
-#DEST_IP   = (10<<24) + (0<<16) + (1<<8) + (63<<0) #c0a8290a,s6c0
-DEST_MAC  = 0x0cc47aaa8afb #0c:c4:7a:aa:8a:fb, for acme1 eth1
+#DEST_MAC  = 0x0cc47aaa8afb #0c:c4:7a:aa:8a:fb, for acme1 eth1
 DEST_MAC  = 0x180373e8a68a #18:03:73:e8:a6:8a, for peix-RAL eth0
-#DEST_MAC  = 0x002590e26905 #00:25:90:e2:69:05, snb11 eno2
 DEST_PORT = 10000 #4321
 ACC_LEN   = 2**12
-#BOFFILE = 'ctrl_1gbe_0810_2017_Aug_25_1056.bof'
-#BOFFILE = 'frb_roach2_20170828_2017_Sep_05_0916.bof'
-#BOFFILE = 'c1500x4096_x14_7_0828_2017_Sep_01_1433.bof'
-#BOFFILE = 'c1500x4096_x14_7_0828_2017_Sep_08_1055.bof'
-#BOFFILE = 'frb_1gbe_nodelay_pfb_2017_Sep_15_1124.bof'
-#BOFFILE = 'frb_1gbe_nodelay_all_2017_Sep_15_1140.bof'
-#BOFFILE = 'frb_1gbe_960_twodelay_2017_Sep_18_0937.bof'
-#BOFFILE = 'frb_1gbe_1080_2017_Sep_18_1339.bof'
-#BOFFILE = 'c960x4096_x14_7_lessdelay_2017_Sep_20_1234.bof'
 BOFFILE = 'c960x4096_x14_7_lessdelay_2017_Sep_20_1648.bof'
 
 #fabric MAC: hex2dec('123456789abc'), IP adress:167772453, UDP Port:60000
@@ -85,11 +74,11 @@ fpga.write_int('sw_pps', 0)
 # enable 10gbe output
 fpga.write_int('one_GbE_oge_en', 1)
 
-# enable test mode
-fpga.write_int('tvg_cmult_en',1)
+# disable test mode
+fpga.write_int('tvg_cmult_en',0)
 
 # set barrel shift, shift toward left
-fpga.write_int('vacc_shift',52)
+fpga.write_int('vacc_shift',30)
 
 
 

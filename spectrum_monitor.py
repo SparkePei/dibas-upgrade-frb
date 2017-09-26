@@ -8,19 +8,15 @@ frame_len = 768
 n_frame_per_spec = 16
 spec_len = 4096
 data_size_per_frame = spec_len/n_frame_per_spec
-paa=spec_len*[0]
-pbb=spec_len*[0]
 xx = spec_len*[0]
 yy = spec_len*[0]
 acclen=0
 gain=0
-yy_tmp=data_size_per_frame*[0]
-data_tmp=data_size_per_frame*2*[0]
-header_tmp=(frame_len-data_size_per_frame)*[0]
-frame=0
+#yy_tmp=data_size_per_frame*[0]
+#data_tmp=data_size_per_frame*2*[0]
+#header_tmp=(frame_len-data_size_per_frame)*[0]
 
 def get_data():
-	global acclen,gain,frame
 	gain=fpga.read_int('vacc_shift')
 
 	acclen=fpga.read_int('vacc_acc_len')/256
@@ -61,10 +57,7 @@ def plot_spectrum():
 
 	matplotlib.pyplot.clf()
 	seq,paa,pbb = get_data()
-	#print acclen
-	#print gain
-
-	#print paa
+	# print power of xx
 	pylab.subplot(211)
 	#pylab.title('SEQ is '+str(seq),bbox=dict(facecolor='red', alpha=0.5))
 	pylab.title('SEQ is '+str(seq))
@@ -74,7 +67,7 @@ def plot_spectrum():
 	pylab.ylabel('xx')
 	#pylab.ylabel('Power(dBm)')
 
-	#print pbb
+	# print power of yy
 	pylab.subplot(212)
     	#pylab.title('yy')	
 	pylab.plot(pbb,color="b")
@@ -99,11 +92,11 @@ if __name__ == '__main__':
 
 	sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 	sock.bind((IP, PORT))
-	#fpga.write_int('tvg_cmult_en',1)
-	fpga.write_int('tvg_cmult_en',0) # 0 for ramp check
-	fpga.write_int('vacc_shift',30)
+	#fpga.write_int('tvg_cmult_en',1) # set ramp check mode
+	fpga.write_int('tvg_cmult_en',0) # unset ramp check mode
+	fpga.write_int('vacc_shift',30) # for a input -10dBm signal
 	#fpga.write_int('vacc_shift',52) # for ramp
-	#f_header = open("header.txt","w")
+	#f_header = open("header.txt","w") # write header to a file 
 	if PORT != -1:
 		print "1GbE port connect done!"
 		fig = matplotlib.pyplot.figure()
