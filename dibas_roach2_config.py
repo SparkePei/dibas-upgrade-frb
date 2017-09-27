@@ -10,7 +10,7 @@ DEST_IP   = (10<<24) + (0<<16) + (1<<8) + (12<<0) #peix-RAL
 DEST_MAC  = 0x180373e8a68a #18:03:73:e8:a6:8a, for peix-RAL eth0
 DEST_PORT = 10000 #4321
 ACC_LEN   = 2**12
-BOFFILE = 'c960x4096_x14_7_lessdelay_2017_Sep_20_1648.bof'
+BOFFILE = 'c960x4096_x14_7_r2013b_frb.bof'
 
 #fabric MAC: hex2dec('123456789abc'), IP adress:167772453, UDP Port:60000
 SRC_IP   = (10<<24) + (0<<16) + (1<<8) + (37<<0) # fabric IP adress:167772453
