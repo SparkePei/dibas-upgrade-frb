@@ -53,3 +53,13 @@ To get the power data for FRBs detection when Dibas run in SETI observation mode
 All of ROACH2 firmware and boffile you can find [on GitHub](https://github.com/SparkePei/dibas-upgrade-frb).
 
 Here is a hashpipe code for dibas frb packets receiving and filterbank data writing [dibas-hashpipe](https://github.com/SparkePei/dibas-hashpipe) 
+* Set up at GBO
+	* ROACH2's hostname: specdemo
+	* ROACH2 mounted on asa6 server
+	* Boffile location: /srv/squeeze_root.ppc/boffiles
+	* commands to start up DiBAS
+	/usr/local/bin/dibas_init.rb
+	python /usr/local/calibrate_adc_mmcm.py
+	* ROACH2's V6 one GbE port info, IP address: 10.0.1.37, port number: 60000
+	* Valon clock change to 960MHz.(Notice:change the sample clock will change the "mcount" rate, which will change the calculation from "mcount" time to "real" time.)
+	* Second Nyquist sampling zone, please flip the frequency channel

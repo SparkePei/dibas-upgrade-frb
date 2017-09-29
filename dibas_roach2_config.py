@@ -3,7 +3,8 @@
 import corr
 import time
 
-HOST = 'r2d021403.casper.pvt' # 10.0.1.170
+#HOST = 'r2d021403.casper.pvt' # 10.0.1.170
+HOST = "specdemo" #
 #DEST_IP   = (10<<24) + (0<<16) + (1<<8) + (1<<0) #c0a8290a,acme1
 DEST_IP   = (10<<24) + (0<<16) + (1<<8) + (12<<0) #peix-RAL
 #DEST_MAC  = 0x0cc47aaa8afb #0c:c4:7a:aa:8a:fb, for acme1 eth1
