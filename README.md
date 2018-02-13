@@ -59,7 +59,7 @@ Here is a hashpipe code for dibas frb packets receiving and filterbank data writ
 	* Boffile location: /srv/squeeze_root.ppc/boffiles
 	* commands to start up DiBAS for new greenburst version(execute from asa6): dibas_init.rb _0.1.5_
 	* To change back to old DiBAS version: dibas_init.rb _0.0.0_<rb>
-	and then run adc calibration code: python /usr/local/bin/calibrate_adc_mmcm.py specdemo
+	,and then run adc calibration code: python /usr/local/bin/calibrate_adc_mmcm.py specdemo
 	* ROACH2's V6 one GbE port info, IP address: 10.0.1.37, port number: 60000
 	* Valon clock change to 960MHz.(Notice:change the sample clock will change the "mcount" rate, which will change the calculation from "mcount" time to "real" time.)
 	* Second Nyquist sampling zone, please flip the frequency channel
@@ -67,3 +67,7 @@ Here is a hashpipe code for dibas frb packets receiving and filterbank data writ
 	* vacc_acc_len=60,sampling time=256us
 	* vacc_shift=38
 	* data rate: 77640KB/s
+* Notes
+	* dibas_init.rb install location:/usr/local/lib/ruby/gems/2.0.0/gems/dibas-0.1.5/bin. Change this file will change the setting for dibas_init.rb _0.1.5_. current setting in this file is:fpga.vacc_acc_len = 60,fpga.vacc_shift = 38
+	* check the Valon setting, run: sudo /home/jeffc/bin/valon
+
