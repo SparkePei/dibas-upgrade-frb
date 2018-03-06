@@ -67,7 +67,12 @@ Here is a hashpipe code for dibas frb packets receiving and filterbank data writ
 	* vacc_acc_len=60,sampling time=256us
 	* vacc_shift=38
 	* data rate: 77640KB/s
+	* the bandpass of L band receiver is shown in fig. 3
+![L-bandpass](L-bandpass.png)
+> fig. 2 Lband-bandpass
 * Notes
-	* dibas_init.rb install location:/usr/local/lib/ruby/gems/2.0.0/gems/dibas-0.1.5/bin. Change this file will change the setting for dibas_init.rb _0.1.5_. current setting in this file is:fpga.vacc_acc_len = 60,fpga.vacc_shift = 38
+	* dibas_init.rb install location:/usr/local/lib/ruby/gems/2.0.0/gems/dibas-0.1.5/bin. Change this file will change the setting for dibas_init.rb _0.1.5_. current setting in this file is:fpga.vacc_acc_len = 60,fpga.vacc_shift = 39
 	* check the Valon setting, run: sudo /home/jeffc/bin/valon
+	* check which receiver is running: redis-cli -> hmget IFV1TNCI VALUE (the L-band receiver is coded as Rcvr1_2)
+get WEBCNTRL (if the returned value is 1,you can record data)
 
