@@ -73,13 +73,15 @@ Here is a hashpipe code for dibas frb packets receiving and filterbank data writ
 * Notes
 	* dibas_init.rb install location:/usr/local/lib/ruby/gems/2.0.0/gems/dibas-0.1.5/bin. Change this file will change the setting for dibas_init.rb _0.1.5_. current setting in this file is:fpga.vacc_acc_len = 60,fpga.vacc_shift = 39
 	* check the Valon setting, run sudo /home/jeffc/bin/valon, or you can open an ipython prompt and run following command:
-```import valon_synth
+```
+import valon_synth
 v = valon_synth.Synthesizer('/dev/ttyUSB0')
 v.set_frequency(valon_synth.SYNTH_A,960) # set A channel to 960MHz for greenburst, change it back to 1500 when run 0.0.0 old dibas version
 v.get_frequency(valon_synth.SYNTH_A)
 ```
-If the permission denied add your username to dialout and then re-login:
-```sudo adduser username dialout
+	* If the permission denied add your username to dialout and then re-login:
+```
+sudo adduser username dialout
 ```
 	* check which receiver is running: redis-cli -> hmget IFV1TNCI VALUE (the L-band receiver is coded as Rcvr1_2)
 get WEBCNTRL (if the returned value is 1,you can record data)
