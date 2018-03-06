@@ -57,8 +57,8 @@ Here is a hashpipe code for dibas frb packets receiving and filterbank data writ
 	* ROACH2's hostname: specdemo
 	* ROACH2 mounted on asa6 server
 	* Boffile location: /srv/squeeze_root.ppc/boffiles
-	* commands to start up DiBAS for new greenburst version(execute from asa6): dibas_init.rb _0.1.5_
-	* To change back to old DiBAS version: dibas_init.rb _0.0.0_<rb>
+	* commands to start up DiBAS for new greenburst version(execute from asa6): ```dibas_init.rb _0.1.5_```
+	* To change back to old DiBAS version: ```dibas_init.rb _0.0.0_```
 	,and then run adc calibration code: python /usr/local/bin/calibrate_adc_mmcm.py specdemo
 	* ROACH2's V6 one GbE port info, IP address: 10.0.1.37, port number: 60000
 	* Valon clock change to 960MHz.(Notice:change the sample clock will change the "mcount" rate, which will change the calculation from "mcount" time to "real" time.)
