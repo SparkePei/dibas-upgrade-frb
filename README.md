@@ -65,13 +65,16 @@ Here is a hashpipe code for dibas frb packets receiving and filterbank data writ
 	* Second Nyquist sampling zone, please flip the frequency channel
 * Test at GBO
 	* vacc_acc_len=60,sampling time=256us
-	* vacc_shift=38
+	* vacc_shift=44
 	* data rate: 77640KB/s
 	* the bandpass of L band receiver is shown in fig. 3
+	* the bandpass of updated L band receiver is shown in fig. 4
 ![L-bandpass](L-bandpass.png)
-> fig. 2 Lband-bandpass
+> fig. 3 Lband-bandpass
+![new-L-bandpass](new-L-bandpass.png)
+> fig. 4 newLband-bandpass
 * Notes
-	* dibas_init.rb install location:/usr/local/lib/ruby/gems/2.0.0/gems/dibas-0.1.5/bin. Change this file will change the setting for dibas_init.rb _0.1.5_. current setting in this file is:fpga.vacc_acc_len = 60,fpga.vacc_shift = 39
+	* dibas_init.rb install location:/usr/local/lib/ruby/gems/2.0.0/gems/dibas-0.1.5/bin. Change this file will change the setting for dibas_init.rb _0.1.5_. current setting in this file is:fpga.vacc_acc_len = 60,fpga.vacc_shift = 44
 	* check the Valon setting, run sudo /home/jeffc/bin/valon, or you can open an ipython prompt and run following command:
 	```
 	import valon_synth
