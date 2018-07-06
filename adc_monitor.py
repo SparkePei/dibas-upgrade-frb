@@ -4,7 +4,8 @@ import matplotlib.pyplot as plt
 import corr,time,numpy,struct,sys,logging,pylab
 import matplotlib.mlab as mlab
 
-roach="10.0.1.170"#roach2
+#roach="10.0.1.170"#roach2
+HOST = "specdemo"
 
 def exit_fail():
 	print 'FAILURE DETECTED. Log entries:\n',lh.printMessages()
@@ -44,6 +45,10 @@ def myplot():
 	#plt.xlim(0,len(value_a))
 	plt.xlim(0,1000)
 	plt.plot(value_a,'b')
+	power_a = value_a*value_a
+	rms = np.sqrt(np.mean(power_a))
+        print 'rms of value_a is :',rms
+
 
 	plt.subplot(3,2,2)
 	plt.title('IF1 Time-domain ')
@@ -53,6 +58,9 @@ def myplot():
 	#plt.xlim(0,len(value_a))
 	plt.xlim(0,1000)
 	plt.plot(value_b,'g')
+        power_b = value_b*value_b
+        rms = np.sqrt(np.mean(power_b))
+        print 'rms of value_b is :',rms
 
 	# create ideal gaussian shape for 8 bits
 	th_id = 64 # ideal thresh
@@ -99,11 +107,10 @@ def myplot():
 	#print spectrum.shape
 	#print spectrum
 	spectrum_a  = 20*numpy.log10(spectrum_a/n_accs/n_chans*4.91)-60
+	spectrum_a = spectrum_a[::-1]
 	#print spectrum.shape
 	#print spectrum
 	#print 'plotting from %i to %i'%(t_start,max_pos-1)
-	pylab.hold(True)
-	#plt.plot(freqs/1e6,fullSpectrum,label='Signal on')
 	pylab.hold(True)
 	plt.subplot(3,2,5)
 	plt.plot(freqs/1e6,spectrum_a,'b')
@@ -113,20 +120,16 @@ def myplot():
 	plt.xlabel('Frequency (MHz)')
 
 
-	n_accs=len(inter_mv_b)/n_chans/2
-	freqs=numpy.arange(n_chans)*float(960000000)/n_chans #channel center freqs in Hz.
-	window=numpy.hamming(n_chans*2)
 	spectrum_b=numpy.zeros(n_chans)
 	for acc in range(n_accs):
 		spectrum_b += numpy.abs((numpy.fft.rfft(inter_mv_b[n_chans*2*acc:n_chans*2*(acc+1)]*window)[0:n_chans])) 
 	#print spectrum.shape
 	#print spectrum
 	spectrum_b  = 20*numpy.log10(spectrum_b/n_accs/n_chans*4.91+0.0000001)-60
+	spectrum_b  = spectrum_b[::-1]
 	#print spectrum.shape
 	#print spectrum
 	#print 'plotting from %i to %i'%(t_start,max_pos-1)
-	pylab.hold(True)
-	#plt.plot(freqs/1e6,fullSpectrum,label='Signal on')
 	pylab.hold(True)
 	plt.subplot(3,2,6)
 	plt.plot(freqs/1e6,spectrum_b,'g')
@@ -140,11 +143,11 @@ def myplot():
 if __name__ == '__main__':
 	loggers = []
 	lh=corr.log_handlers.DebugLogHandler()
-	logger = logging.getLogger(roach)
+	logger = logging.getLogger(HOST)
 	logger.addHandler(lh)
 	logger.setLevel(10)
 	sys.stdout.flush()
-	fpga = corr.katcp_wrapper.FpgaClient(roach, 7147, timeout=10,logger=logger)
+	fpga = corr.katcp_wrapper.FpgaClient(HOST, 7147, timeout=10,logger=logger)
 	time.sleep(1)
 	if fpga.is_connected():
 		print 'DONE'

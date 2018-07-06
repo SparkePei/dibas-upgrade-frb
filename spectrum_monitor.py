@@ -12,6 +12,8 @@ xx = spec_len*[0]
 yy = spec_len*[0]
 acclen=0
 gain=0
+
+HOST = 'specdemo'
 #yy_tmp=data_size_per_frame*[0]
 #data_tmp=data_size_per_frame*2*[0]
 #header_tmp=(frame_len-data_size_per_frame)*[0]
@@ -82,7 +84,8 @@ def plot_spectrum():
 
 if __name__ == '__main__':
 
-	fpga=corr.katcp_wrapper.FpgaClient('r2d021403.casper.pvt')
+	#fpga=corr.katcp_wrapper.FpgaClient('r2d021403.casper.pvt')
+	fpga=corr.katcp_wrapper.FpgaClient(HOST)
 	time.sleep(0.1)
 	if (fpga.is_connected()==True):
 		print "roach2 connected, done!"

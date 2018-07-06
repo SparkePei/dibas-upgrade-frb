@@ -152,11 +152,15 @@ fpga.print_10gbe_core_details(gbe_x6, arp=True )
 #fpga.print_10gbe_core_details(gbe_x7, arp=True )
 
 # Set fft shift
+#fpga.fft_shift = 0b011_011_011_011
+#fpga.scale_p0 = 0x00180000
+#fpga.scale_p1 = 0x00180000
+#fpga.write_int('fftshift', 1755) # same with old design
 fpga.write_int('fftshift', 8191)
 #fpga.write_int('scale_p0', 0x00180000)
 #fpga.write_int('scale_p1', 0x00180000)
-fpga.write_int('scale_p0', 0x02000000)
-fpga.write_int('scale_p1', 0x02000000)
+fpga.write_int('scale_p0', 0x9000000)
+fpga.write_int('scale_p1', 0x9000000)
 
 fpga.write_int('n_chan', 12)
 
@@ -188,7 +192,9 @@ try:
 	fpga.write_int('tvg_cmult_en',0)
 	
 	# set barrel shift, shift toward left
-	fpga.write_int('vacc_shift',50)
+	#fpga.write_int('vacc_shift',41) # 
+	#fpga.write_int('vacc_shift',50)
+	fpga.write_int('vacc_shift',45) # without Notch filter
 except:
 	print "launch original version B."
 
